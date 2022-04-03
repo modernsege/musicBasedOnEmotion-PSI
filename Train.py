@@ -1,11 +1,8 @@
 # import required packages
 import cv2
-import tensorflow as tf
-from tensorflow import keras
-from keras import optimizers
-#from tensorflow.keras.optimizers import Adam
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Dropout, Flatten
+from tensorflow.keras.optimizers import Adam
 from keras.preprocessing.image import ImageDataGenerator
 
 # Initialize image data generator with rescaling
@@ -49,7 +46,7 @@ emotion_model.add(Dense(7, activation='softmax'))
 
 cv2.ocl.setUseOpenCL(False)
 
-emotion_model.compile(loss='categorical_crossentropy', optimizer=tf.keras.optimizers.Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
+emotion_model.compile(loss='categorical_crossentropy', optimizer=Adam(lr=0.0001, decay=1e-6), metrics=['accuracy'])
 
 # Train the neural network/model
 emotion_model_info = emotion_model.fit_generator(
